@@ -1,0 +1,29 @@
+---
+title: "Group Project"
+author: "Spark Li"
+date: "February 18, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+#Data Import
+
+```{r, message=F}
+top2017 <- read.csv("featuresdf.csv")
+top2018 <- read.csv("top2018.csv")
+```
+
+#Data Transformation
+
+```{r}
+top1 <- mutate(top2017,
+               year=2017)
+top2 <- mutate(top2018,
+               year=2018)
+top <- rbind(top1, top2)
+write_csv(top,"TOP.CSV")
+```
